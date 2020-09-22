@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, Image, FlatList, TouchableOpacity, Linking } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Header from '../../home/HomeHeader';
 import styles from './styles'
@@ -32,6 +32,10 @@ function Publications() {
     }
   }, [])
 
+  function sendWhatsapp(number){
+    Linking.openURL(`whatsapp://send?phone=5511987654321&text=Olá%20vi%20seu%20anúncio%20no%20PetMagnet%20e%20me%20interessei%20no%20seu%20produto!`)
+  }
+
   return (
     <View style={styles.publicacaoView}>
       <Header />
@@ -63,7 +67,7 @@ function Publications() {
             </View>
             <View style={styles.contactBox}>
               <View style={styles.whatsapp}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={sendWhatsapp}>
                   <Icon name="whatsapp" size={26} />
                 </TouchableOpacity>
               </View>
